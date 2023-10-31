@@ -5,6 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Lenis - Smooth Scrolling Library</title>
+
+        <!-- JQuery CSS-->
+        <link rel="stylesheet" href="assets/jquery-plugins/cursor-hover/main.css" />
+
         <link rel="stylesheet" href="./style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,6 +22,9 @@
             src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
             type="module"
         ></script>
+
+        <!-- JQuery -->
+        <script async src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     </head>
     <body>
         <!-- 1st HTML -->
@@ -26,7 +33,7 @@
             <div class="container">
                 <dotlottie-player
                     id="hover-element"
-                    src="hand-shake.json"
+                    src="assets/Lottie/hand-shake.json"
                     background="transparent"
                     speed="1"
                     style="width: 100vw; height: 100vh"
@@ -45,15 +52,15 @@
             <div class="container">
                 <div class="vertical__content">
                     <div class="col col_left">
-                        <h2 class="vertical__heading">
-                            <p>Muhammad Afzal</p>
+                        <h2 class="vertical__heading"    data-magnetic data-cursor="-opaque">
+                            <p >Muhammad Afzal</p>
                             <!-- <div><img src="assets/images/Web-Image.jpg" alt=""></div> -->
                             <p>Dialectic Thinker</p>
                         </h2>
                     </div>
                     <div class="col col_right">
                         <div class="vertical__item">
-                            <h3>💎 introduction</h3>
+                            <h3  class="sticky-element" data-cursor-stick=".sticky-element" data-cursor="-opaque">💎 introduction</h3>
                             <p class="intro-para">
                                 I spent four years of my life exploring Computer
                                 Science deep down in its core. The story started
@@ -272,10 +279,39 @@
             </div>
         </section>
 
+        <!-- JQuery Plugins -->
+
+        <script
+            defer
+            src="assets/jquery-plugins/cursor-hover/bundle.js"
+        ></script>
+
+        <!-- GSAP -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
         <script src="https://assets.codepen.io/16327/ScrollTrigger.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@latest/bundled/lenis.js"></script>
         <script src="./script.js"></script>
 
+        <script>
+            const cursor = new Cursor({
+      container: "body",
+      speed: 0.7, // animation speed
+      ease: "expo.out", // gsap easing
+      visibleTimeout: 300
+});
+
+// cursor.setSticky
+
+// const magnetic = new Magnetic(".vertical__heading", {
+//       y: 0.2, // horizontal delta
+//       x: 0.2, // vertical delta
+//       s: 0.2, // speed
+//       rs: 0.7 // release speed
+// });
+
+const stickyElement = document.querySelector('.sticky-element');
+cursor.setStick(stickyElement);
+
+        </script>
     </body>
 </html>

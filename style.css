@@ -45,9 +45,14 @@ html {
 --shadow-color: rgba(0, 0, 0, 0.2);
 }
 
+html{
+
+}
+
 html, body {
     width: 100%;
     min-height: 100%;
+
     
 }
 
@@ -59,6 +64,13 @@ body {
     color: #fff;
     margin:0;
     font-family: 'Poppins', sans-serif;
+
+    color: #000;
+
+
+  
+    
+    
 }
 
 
@@ -321,7 +333,7 @@ section {padding: 50px 0;}
 
   body {
 
-      background-color:    #F0F0F3;
+      /* background-color:    #F0F0F3; */
       
 
     /* background-color: var(--background-color); */
@@ -376,9 +388,14 @@ width: 100%;
 inset: 0px;
   }
   
-  body {
-    color: #fff;
-  }
+  /* body {
+    color: #000;
+    background: url("assets/images/cross-section.png");
+    backdrop-filter: blur(5px);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  } */
   
 
 
