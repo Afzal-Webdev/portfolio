@@ -66,12 +66,35 @@ body {
     font-family: 'Poppins', sans-serif;
 
     color: #000;
+    
 
 
   
     
     
 }
+
+#vertical{
+  background-image: url(assets/images/destiny.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(10px);
+}
+#vertical::after{
+  /* background-image: linear-gradient(to right, black,white);
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(10px);
+  width: 100%;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-blend-mode: color-dodge;
+  opacity: 0.9;
+  z-index: -1; */
+}
+
 
 
 
@@ -121,27 +144,74 @@ section {padding: 50px 0;}
     align-items: flex-start;
 }
 
-.vertical__content .col_left {height: 100%;}
+.vertical__content .col_left {height: 100%;height: 100%;
+  backdrop-filter: blur(10px);
+  opacity: 0.3;
+  background-color: white;
+  border-radius: 1em 2em 1em 0.5em;}
 
 .vertical__content .col.col_right {
     width: 60%;
+    position: relative;
 }
 
+.vertical__item:nth-of-type(1)::after{
+
+  background: url(assets/images/Intro.png);
+  background-size: cover;
+  border-radius: 10px;
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .3; 
+  background-position: center;
+  backdrop-filter: blur(10px);
+  background-color: transparent;
+ clip-path: circle(0,50%);
+
+ 
+
+}
+.vertical__item:nth-of-type(2)::after{
+
+  background: url(assets/images/professional-experience.png);
+  background-size: cover;
+  border-radius: 10px;
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .3;
+  background-position: center;
+
+}
+.vertical__item:nth-of-type(1):hover::after {
+  
+}
 .vertical__item{
+  
   width: auto;
   height: auto;
   /* max-width: 770px; */
-  background: #e8e8f3;
+  /* background: #6e6e91; */
   position: relative;
   padding:1rem 3rem;
   border-radius: 10px;
   margin: 40px;
+  z-index: 2;
+/*   
   box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15),
     -7px -7px 20px rgba(255, 255, 255, 1),
     inset 0px 0px 4px rgba(255, 255, 255, 0.2),
     inset 7px 7px 15px rgba(55, 84, 170, 0),
     inset -7px -7px 20px rgba(255, 255, 255, 0),
-    0px 0px 4px rgba(255, 255, 255, 0) !important;
+    0px 0px 4px rgba(255, 255, 255, 0) !important; */
+    
+
+}
+.vertical__item>*{
+
 }
 
 .vertical__item:not(:last-child) {
@@ -150,22 +220,35 @@ section {padding: 50px 0;}
 .vertical__item>p{
     font-size: 1.3rem;
     text-align: justify;
-   color: #596275;
+   color: #202015;
+   /* text-shadow: 0px 2px  #8a1010; */
 }
 .vertical__item>h3{
     margin-bottom: 1rem;
+    color:#ffffff75;
 }
 #horizontal {
     padding: 100px 0;
+    background-image: url(assets/images/horizontal-bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
 .horizontal__content {
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
 }
 
 .horizontal__item {
     border: 1px solid #efefef;
-    padding: 200px 150px;
+    width: 400px;
+    max-width: 100%;
+    height: 500px;
+    
+    /* padding: 200px 150px; */
 
 }
 .horizontal__item:not(:last-child) {
@@ -329,6 +412,102 @@ section {padding: 50px 0;}
     
   
   }
+
+
+
+  /* Stepper Component */
+
+:root {
+  --circle-size: clamp(1.5rem, 5vw, 3rem);
+  --spacing: clamp(0.25rem, 2vw, 0.5rem);
+}
+
+.c-stepper__item {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 4rem;
+}
+
+.c-stepper__item:before {
+  content: "";
+  flex: 0 0 var(--circle-size);
+  height: var(--circle-size);
+  border-radius: 50%;
+  /* background-color: lightgrey; */
+}
+.c-stepper__item:nth-of-type(2)::before{
+background-image: url(/assets/images/ilsainteractive_logo.jpg);
+background-size: cover;
+}
+.c-stepper__item:nth-of-type(1)::before{
+  background-image: url(/assets/images/NB-Logo.png);
+  background-size: cover;
+}
+.c-stepper__item:nth-of-type(3)::before{
+  background-image: url(/assets/images/UOH-logo.jpg);
+background-size: cover;
+}
+.c-stepper__item:not(:last-child):after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(var(--circle-size) + var(--spacing));
+  bottom: var(--spacing);
+  z-index: -1;
+  transform: translateX(calc(var(--circle-size) / 2));
+  width: 2px;
+  background-color: #e0e0e0;
+}
+
+.c-stepper__title {
+  font-weight: bold;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  margin-bottom: clamp(0.85rem, 2vmax, 1rem);
+}
+
+.c-stepper__desc {
+  color: rgb(255, 255, 255);
+  font-size: clamp(0.85rem, 2vmax, 1rem);
+
+}
+/* .c-stepper__desc::before{
+  content: "👓";
+} */
+
+.c-stepper__content {
+  max-width: 700px;
+}
+
+/*** Non-demo CSS ***/
+
+.wrapper {
+  max-width: 1000px;
+  margin: 2rem auto 0;
+}
+
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+  /* Stepper Component Ends Here*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   body {
