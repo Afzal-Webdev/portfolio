@@ -162,20 +162,24 @@ section {padding: 50px 0;}
   border-radius: 10px;
   content: '';
   position: absolute;
-  inset: 0;
+  inset:0;
   z-index: -1;
   opacity: .3; 
   background-position: center;
   backdrop-filter: blur(10px);
-  background-color: transparent;
- clip-path: circle(0,50%);
+  transform-origin: top left;
+
+    /* clip-path: circle(10% at -10% -10%); */
+    /* transition: clip-path 1s; */
+  
+
 
  
 
 }
 .vertical__item:nth-of-type(2)::after{
 
-  background: url(assets/images/professional-experience.png);
+  background: url(assets/images/professional-experience-3.png);
   background-size: cover;
   border-radius: 10px;
   content: '';
@@ -188,6 +192,11 @@ section {padding: 50px 0;}
 }
 .vertical__item:nth-of-type(1):hover::after {
   
+
+    clip-path: circle(100%);
+    color: white!important;
+ 
+ 
 }
 .vertical__item{
   
@@ -220,12 +229,13 @@ section {padding: 50px 0;}
 .vertical__item>p{
     font-size: 1.3rem;
     text-align: justify;
-   color: #202015;
+   color: rgba(255,255,255,0.8);
+   text-shadow: 1px 1px #000;
    /* text-shadow: 0px 2px  #8a1010; */
 }
 .vertical__item>h3{
     margin-bottom: 1rem;
-    color:#ffffff75;
+    color:#fff;
 }
 #horizontal {
     padding: 100px 0;
@@ -277,30 +287,48 @@ section {padding: 50px 0;}
   
   .gallery h1 {
     font-size:clamp(2em, 4vw, 6em);
+    color: #fff559;
   }
   
   .gallery p {
     font-size:clamp(1.4em, 2.5vw, 3.5em);
     line-height:1.4;
+    color: rgba(0, 0, 0, 0.8);
   }
   
   
   .gallery {
     display:flex; 
     /* outline:1px solid red; */
+    background-image: url(assets/images/professional-experience.png);
+    background-size: cover;
+    background-position: center;
+    position:relative;
+    z-index: -1;
   }
+
+  .gallery >.left{
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px var(--shadow-color);
+    position: relative;
+    background-color: r;
+    background: rgba(255,255,255,0.1);
+    padding-inline: 1em;
+  }
+
   
   .left {
     width:50%;
+
   }
-  
-  .right {
+.gallery .pin-spacer > .right {
     height:100vh;
     /* outline:1px solid purple; */
     width:50%;
     display:flex;
     flex-direction:column;
-    justify-content:center;
+    align-items:center;
   }
   
   .desktopContent {
@@ -314,13 +342,21 @@ section {padding: 50px 0;}
     display:flex;
     flex-direction:column;
     justify-content:center;
+/* 
+    border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px var(--shadow-color);
+  position: relative;
+  background-color: r;
+  background: rgba(255,255,255,0.1);
+  padding-inline: 1em; */
   }
   
   
   .desktopPhotos {
     width:40vw;
     height:40vw;
-    border-radius: 20px 100px 20px 100px;
+    /* border-radius: 20px 100px 20px 100px; */
     position:relative;
     overflow:hidden;
     box-shadow:4px 4px 4px rgba(0, 0, 0, 0.4);
@@ -330,19 +366,19 @@ section {padding: 50px 0;}
     position:absolute;
     width:100%;
     height:100%;
-    border-radius: 20px 100px 20px 100px;
+    /* border-radius: 20px 100px 20px 100px; */
   
   }
 
   .desktopPhoto>img{
     object-fit: cover;
     width: 100%;
-    border-radius: 20px 100px 20px 100px;
-    filter: blur(10px);
-    transition: filter 1s ease-in-out;
+    /* border-radius: 20px 100px 20px 100px; */
+    /* filter: blur(10px);
+    transition: filter 1s ease-in-out; */
   }
   .desktopPhoto>img:hover{
-    filter: unset;
+    /* filter: unset; */
   }
   
   .hero-section{
@@ -464,10 +500,12 @@ background-size: cover;
   font-weight: bold;
   font-size: clamp(1rem, 4vw, 1.25rem);
   margin-bottom: clamp(0.85rem, 2vmax, 1rem);
+  color: white;
+  background-color: white;
 }
 
 .c-stepper__desc {
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255,0.5);
   font-size: clamp(0.85rem, 2vmax, 1rem);
 
 }
@@ -498,43 +536,10 @@ background-size: cover;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-  body {
-
-      /* background-color:    #F0F0F3; */
-      
-
-    /* background-color: var(--background-color); */
-    /* background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); */
-
-    /* background-color: #FBAB7E;
-background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); */
-
-
-/* background-image: linear-gradient(90deg, #85FFBD 0%, #FFFB7D 100%); */
-
-
-    
-  }
-
-
   
   .card {
-    background-color: var(--card-color);
+  
     border-radius: 10px;
-    /* padding: 20px; */
     backdrop-filter: blur(10px);
     box-shadow: 0 0 10px var(--shadow-color);
     position: relative;
@@ -544,16 +549,8 @@ background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); */
 
   
   .card::after {
-    /* content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    border-radius: 50%;
-    background: radial-gradient(circle, #FFC8DD, #FF1493);
-    z-index: -1; */
-
+    display: none;
+   
     /* From https://css.glass */
     content: "";
     position: absolute;
@@ -566,15 +563,27 @@ height: 100%;
 width: 100%;
 inset: 0px;
   }
+
+  .gallery::after{
+
+   
+    /* From https://css.glass */
+    content: "";
+    position: absolute;
+background: rgba(255, 255, 255, 0.11);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+/* backdrop-filter: blur(10px); */
+
+-webkit-backdrop-filter: blur(5.1px);
+height: 100%;
+width: 100%;
+inset: 0px;
+
+z-index: -1;
+  }
   
-  /* body {
-    color: #000;
-    background: url("assets/images/cross-section.png");
-    backdrop-filter: blur(5px);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-  } */
+ 
   
 
 
